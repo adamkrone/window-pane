@@ -17,7 +17,7 @@ To work with this plugin you must include:
 
 	$("#wrapper").windowPane({
 		windowPane: ".box",
-		insertInto: ".sub-box
+		insertInto: ".sub-box"
 		image: "img/landscape.jpg"
 	});
 

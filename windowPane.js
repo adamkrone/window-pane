@@ -12,8 +12,11 @@
  			//Default options
  			var defaults = {
  				windowPane: "",
+ 				insertInto: "test",
  				image: ""
  			}
+
+ 			defaults.insertInto = options.windowPane;
 
  			//Override with any provided options
  			var options = $.extend(defaults, options),
@@ -54,7 +57,7 @@
 			});
 
 			//Insert the image as the background to all targeted elements
-			$(options.windowPane, self).each(function () {
+			$(options.insertInto, self).each(function () {
 				$(this).css({
 					"background-image": "url(" + options.image + ")",
 					"background-repeat": "no-repeat",

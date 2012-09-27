@@ -1,0 +1,45 @@
+/* General Styles */
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	background: #f1f1f1;
+}
+
+/* Helper Classes */
+
+.box {
+	float: left;
+	margin: 5px;
+	border: 1px solid #ddd;
+
+	background: white;
+}
+
+.sixbyfour {
+	width: 650px;
+	height: 430px;
+}
+
+.twobytwo {
+	width: 210px;
+	height: 210px;
+}
+
+.fourbytwo {
+	width: 430px;
+	height: 210px;
+}
+
+/* Main Styles */
+
+#wrapper {
+	width: 880px;
+	height: 880px;
+	margin: auto;
+	background: white;
+}

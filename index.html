@@ -1,26 +1,63 @@
 <!doctype html>
 <html>
 	<head>
-		<title>windowPane.js Demo</title>
+		<title>windowPane.js | Demo</title>
 		<link rel="stylesheet" href="main.css">
 	</head>
 	<body>
 
 		<div id="wrapper">
-			<div class="box sixbyfour"></div>
-			<div class="box twobytwo"></div>
-			<div class="box twobytwo"></div>
-			<div class="box fourbytwo"></div>
-			<div class="box twobytwo"></div>
-			<div class="box twobytwo"></div>
-			<div class="box twobytwo"></div>
-			<div class="box twobytwo"></div>
-			<div class="box fourbytwo"></div>
+			<div class="box sixbyfour window">
+				<div id="title">windowPane.js</div>
+			</div>
+			<div class="box twobytwo rollover">
+				<div class="window"></div>
+				<div class="reveal">Additional content here...</div>
+			</div>
+			<div class="box twobytwo rollover">
+				<div class="window"></div>
+				<div class="reveal">Additional content here...</div>
+			</div>
+			<div class="box fourbytwo rollover">
+				<div class="window"></div>
+				<div class="reveal">Additional content here...</div>
+			</div>
+			<div class="box twobytwo rollover">
+				<div class="window"></div>
+				<div class="reveal">Additional content here...</div>
+			</div>
+			<div class="box twobytwo rollover">
+				<div class="window"></div>
+				<div class="reveal">Additional content here...</div>
+			</div>
+			<div class="box twobytwo rollover">
+				<div class="window"></div>
+				<div class="reveal">Additional content here...</div>
+			</div>
+			<div class="box twobytwo rollover">
+				<div class="window"></div>
+				<div class="reveal">Additional content here...</div>
+			</div>
+			<div class="box fourbytwo rollover">
+				<div class="window"></div>
+				<div class="reveal">Additional content here...</div>
+			</div>
 		</div>
 		
 		<!-- Scripts -->
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 		<script type="text/javascript" src="windowPane.js"></script>
-		<script type="text/javascript" src="main.js"></script>
+		<script type="text/javascript">
+
+			$(document).ready(function () {
+
+				$("#wrapper").windowPane({
+					windowPane: ".window",
+					image: "img/landscape3.jpg"
+				});
+
+			});
+
+		</script>
 	</body>
 </html>

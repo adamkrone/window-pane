@@ -4,6 +4,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	-moz-box-sizing: border-box;
 }
 
 html {
@@ -41,5 +42,4 @@ html {
 	width: 880px;
 	height: 880px;
 	margin: auto;
-	background: white;
 }

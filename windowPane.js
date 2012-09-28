@@ -61,8 +61,7 @@
 				$(this).css({
 					"background-image": "url(" + options.image + ")",
 					"background-repeat": "no-repeat",
-					"background-position-x": "-" + WP.position[i].left + "px",
-					"background-position-y": "-" + WP.position[i].top + "px"
+					"background-position": "-" + WP.position[i].left + "px -" + WP.position[i].top + "px"
 				});
 				i++;
 			});

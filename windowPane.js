@@ -27,12 +27,12 @@
 	 			self = $(this),
 					//Window Pane Object
 				WP = {},
-					//Top offset of first "window"
-					offsetTop,
-					//Left offset of first "window"
-					offsetLeft,
-					//counter
-					i = 0;
+				//Top offset of first "window"
+				offsetTop,
+				//Left offset of first "window"
+				offsetLeft,
+				//counter
+				i = 0;
 
 				//Holds top/left position of all "windows"
 				WP.position = [];

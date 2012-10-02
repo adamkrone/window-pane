@@ -3,12 +3,74 @@
 	<head>
 		<title>windowPane.js | Demo</title>
 		<link rel="stylesheet" href="main.css">
+		<style type="text/css">
+
+			/* 6 columns */
+			@media screen and (max-width: 879px) {
+				header h1 {
+					margin-top: 5px;
+
+					font-size: 60px;
+				}
+
+				#wrapper {
+					width: 660px;
+				}
+
+				.sixbyfour {
+					height: 470px;
+					height: 420px;
+				}
+			}
+
+			/* 4 columns */
+			@media screen and (min-width: 440px) and (max-width: 659px) {
+				header h1 {
+					margin-top: 15px;
+
+					font-size: 40px;
+				}
+
+				#wrapper {
+					width: 440px;
+				}
+
+				.sixbyfour {
+					width: 430px;
+					height: 210px;
+				}
+			}
+
+			/* 2 columns */
+			@media screen and (max-width: 439px) {
+				header h1 {
+					margin-top: 25px;
+
+					font-size: 25px;
+				}
+
+				#wrapper {
+					width: 220px;
+				}
+
+				.sixbyfour,
+				.fourbytwo {
+					width: 210px;
+					height: 210px;
+				}
+			}
+
+		</style>
 	</head>
 	<body>
 
+		<header>
+			<h1>Window Pane Effect</h1>
+		</header>
+
 		<div id="wrapper">
-			<div class="box sixbyfour window">
-				<div id="title">windowPane.js</div>
+			<div class="box sixbyfour">
+				<div class="window"></div>
 			</div>
 			<div class="box twobytwo rollover">
 				<div class="window"></div>
@@ -47,13 +109,59 @@
 		<!-- Scripts -->
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 		<script type="text/javascript" src="windowPane.js"></script>
+		<script type="text/javascript" src="masonry.min.js"></script>
 		<script type="text/javascript">
 
 			$(document).ready(function () {
 
-				$("#wrapper").windowPane({
-					windowPane: ".window",
-					image: "img/landscape3.jpg"
+				//Capture initial site width
+				var initialWidth = $(window).width(),
+				/**
+				 * Reruns windowPane whenever called. Used during window resize
+				 * @param  {String} picture Document relative url to bg-image
+				 * @return {Void}
+				 */
+				createWindowPane = function (picture) {
+					$("#wrapper").windowPane({
+						windowPane: ".box",
+						insertInto: ".window",
+						image: picture
+					});
+				},
+				/**
+				 * Checks width during window resize
+				 * @param  {Number} width Current window width
+				 * @return {Void}
+				 */
+				checkWidth = function (width) {
+					//Insert image relative to current window width
+					if (width >= 880) {
+						createWindowPane("img/building_8.jpg");
+					} else if (width <= 879 && width >= 660) {
+						createWindowPane("img/building_6.jpg");
+					} else if (width <= 659 && width >= 440) {
+						createWindowPane("img/building_4.jpg");
+					} else if (width <= 439) {
+						createWindowPane("img/building_2.jpg");
+					}
+					//Reload masonry
+					$("#wrapper").masonry("reload");
+				};
+
+				//Initialize masonry
+				$("#wrapper").masonry({
+					itemSelector: ".box",
+					columnWidth: 110
+				});
+
+				//Load appropriate image
+				checkWidth(initialWidth);
+
+				//Setup window resize event to call checkWidth()
+				$(window).resize(function () {
+					var width = $(window).width();
+
+					checkWidth(width);
 				});
 
 			});

@@ -13,7 +13,8 @@
  			var defaults = {
  				windowPane: "",
  				insertInto: "test",
- 				image: ""
+ 				image: "",
+ 				bgRepeat: "no-repeat"
  			}
 
  			defaults.insertInto = options.windowPane;
@@ -34,8 +35,8 @@
 				//counter
 				i = 0;
 
-				//Holds top/left position of all "windows"
-				WP.position = [];
+			//Holds top/left position of all "windows"
+			WP.position = [];
 
 /******************************************************************************
  * Setup
@@ -60,7 +61,7 @@
 			$(options.insertInto, self).each(function () {
 				$(this).css({
 					"background-image": "url(" + options.image + ")",
-					"background-repeat": "no-repeat",
+					"background-repeat": options.bgRepeat,
 					"background-position": "-" + WP.position[i].left + "px -" + WP.position[i].top + "px"
 				});
 				i++;

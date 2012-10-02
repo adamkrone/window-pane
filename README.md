@@ -52,6 +52,14 @@ _required_
 
 HTML document relative link to the image displayed across "window panes".
 
+###bgRepeat
+
+_optional_
+
+**default:** "no-repeat"
+
+CSS background-repeat argument to use on the background image.
+
 ##License
 
 windowPane.js is released under the [MIT](http://opensource.org/licenses/mit-license.php) license:

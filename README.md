@@ -40,7 +40,7 @@ _optional_
 
 **default:** windowPane selector
 
-CSS selector of elements that will display the image as their background. Only necessary if you want to use the image on a child element of the "window pane".
+CSS selector of elements that will display the image as their background. Only necessary if you want to use the image on a child element of the "window pane". _Currently only supports child elements that fill the "window pane"._
 
 **Example:** animation that reveals a different child element on rollover.
 
@@ -50,7 +50,7 @@ _required_
 
 **default:** none (provided by user)
 
-HTML document relative link to the image displayed across "window panes".
+Document relative link to the image displayed across "window panes".
 
 ##License
 

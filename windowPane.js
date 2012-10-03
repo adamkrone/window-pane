@@ -9,12 +9,17 @@
  	$.fn.extend({
  		windowPane: function(options) {
 
+/******************************************************************************
+ * Options
+ *****************************************************************************/
+
  			//Default options
  			var defaults = {
  				windowPane: "",
  				insertInto: "test",
  				image: "",
- 				bgRepeat: "no-repeat"
+ 				bgRepeat: "no-repeat",
+ 				userCallback: ""
  			}
 
  			defaults.insertInto = options.windowPane;
@@ -23,10 +28,12 @@
  			var options = $.extend(defaults, options),
 
 /******************************************************************************
- * Plugin Variables
+ * Variables
  *****************************************************************************/
 	 			self = $(this),
-					//Window Pane Object
+	 			//Image
+	 			image = new Image(),
+				//Window Pane Object
 				WP = {},
 				//Top offset of first "window"
 				offsetTop,
@@ -66,6 +73,23 @@
 				});
 				i++;
 			});
+
+			//Setup image height
+			image.src = options.image;
+			image.onload = function () {
+				var i = 0;
+
+				//Get image height
+				imageHeight = image.height;
+
+				//Find all window elements below image height
+				$(options.windowPane, self).each(function () {
+					if (WP.position[i].top >= imageHeight) {
+						options.userCallback($(this));
+					}
+					i++
+				});
+			};
 
  		}
  	});

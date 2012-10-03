@@ -37,6 +37,10 @@
 	height: 210px;
 }
 
+.revealed {
+	margin-top: -208px;
+}
+
 /* Main Styles */
 
 html {

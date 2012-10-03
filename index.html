@@ -125,7 +125,10 @@
 					$("#wrapper").windowPane({
 						windowPane: ".box",
 						insertInto: ".window",
-						image: picture
+						image: picture,
+						userCallback: function (element) {
+							element.children(".window").hide();
+						}
 					});
 				},
 				/**
@@ -134,7 +137,7 @@
 				 * @return {Void}
 				 */
 				checkWidth = function (width) {
-					//Insert image relative to current window width
+					//Insert image relative to media query
 					if (width >= 880) {
 						createWindowPane("img/building_8.jpg");
 					} else if (width <= 879 && width >= 660) {
@@ -144,6 +147,8 @@
 					} else if (width <= 439) {
 						createWindowPane("img/building_2.jpg");
 					}
+					//Show all windows
+					$(".window").show();
 					//Reload masonry
 					$("#wrapper").masonry("reload");
 				};
@@ -158,11 +163,11 @@
 				checkWidth(initialWidth);
 
 				//Setup window resize event to call checkWidth()
-				$(window).resize(function () {
+				window.onresize = function () {
 					var width = $(window).width();
 
 					checkWidth(width);
-				});
+				};
 
 			});
 

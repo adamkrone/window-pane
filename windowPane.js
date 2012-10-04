@@ -16,7 +16,7 @@
  			//Default options
  			var defaults = {
  				windowPane: "",
- 				insertInto: "test",
+ 				insertInto: "",
  				image: "",
  				bgRepeat: "no-repeat",
  				revealRollovers: false

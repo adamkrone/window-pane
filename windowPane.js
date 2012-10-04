@@ -19,7 +19,7 @@
  				insertInto: "test",
  				image: "",
  				bgRepeat: "no-repeat",
- 				userCallback: ""
+ 				revealRollovers: false
  			}
 
  			defaults.insertInto = options.windowPane;
@@ -74,22 +74,31 @@
 				i++;
 			});
 
-			//Setup image height
-			image.src = options.image;
-			image.onload = function () {
-				var i = 0;
+			//Reveal rollover state if image doesn't cover the background
+			if (options.revealRollovers) {
 
-				//Get image height
-				imageHeight = image.height;
+				//Show all previously hidden elements
+				$(options.insertInto).show();
 
-				//Find all window elements below image height
-				$(options.windowPane, self).each(function () {
-					if (WP.position[i].top >= imageHeight) {
-						options.userCallback($(this));
-					}
-					i++
-				});
-			};
+				//Setup image height
+				image.src = options.image;
+				image.onload = function () {
+					var i = 0;
+
+					//Get image height
+					imageHeight = image.height;
+
+					//Find all window elements below image height
+					$(options.windowPane, self).each(function () {
+						//Hide elements not covered by image height
+						if (WP.position[i].top >= imageHeight) {
+							$(this).children(options.insertInto).hide();
+						}
+						i++
+					});
+				};
+
+			}
 
  		}
  	});

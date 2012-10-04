@@ -22,6 +22,13 @@ To work with this plugin you must include:
 	});
 
 ```
+
+**Notes on Responsive Pages:**
+
+If you want to incorporate windowPane.js on a responsive page, you will need to use a media query event listener such as [enquire.js](http://wickynilliams.github.com/enquire.js/), and re-initialize the plugin. This allows you to also utilize a unique image optimized for each media query.
+
+Future work will likely involve optimizing the responsive side of the plugin, however plans are to keep handlers like enquire.js separate.
+
 ##Options
 
 As you see above, three options can be passed into windowPane.js:
@@ -59,6 +66,14 @@ _optional_
 **default:** "no-repeat"
 
 CSS background-repeat argument to use on the background image.
+
+###repeatRollovers
+
+_optional_
+
+**default:** false
+
+Automatically reveals any elements that are not covered by the background image. Useful in a responsive page if bgRepeat isn't practical.
 
 ##License
 

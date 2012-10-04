@@ -126,9 +126,7 @@
 						windowPane: ".box",
 						insertInto: ".window",
 						image: picture,
-						userCallback: function (element) {
-							element.children(".window").hide();
-						}
+						revealRollovers: true
 					});
 				},
 				/**
@@ -147,8 +145,6 @@
 					} else if (width <= 439) {
 						createWindowPane("img/building_2.jpg");
 					}
-					//Show all windows
-					$(".window").show();
 					//Reload masonry
 					$("#wrapper").masonry("reload");
 				};

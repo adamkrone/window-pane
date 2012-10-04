@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<title>Enquire Test</title>
+	</head>
+	<body>
+		
+
+	<!-- Scripts -->
+	<script type="text/javascript" src="enquire.min.js"></script>
+	<script type="text/javascript">
+
+		enquire.register("(min-width: 700px)", {
+			match: function () {
+				console.log("over 700px");
+			},
+			unmatch: function () {
+				console.log("under 700px");
+			}
+		}).listen(100);
+
+	</script>
+	</body>
+</html>

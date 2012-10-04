@@ -108,6 +108,7 @@
 		
 		<!-- Scripts -->
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+		<script type="text/javascript" src="enquire.min.js"></script>
 		<script type="text/javascript" src="windowPane.js"></script>
 		<script type="text/javascript" src="masonry.min.js"></script>
 		<script type="text/javascript">
@@ -128,25 +129,6 @@
 						image: picture,
 						revealRollovers: true
 					});
-				},
-				/**
-				 * Checks width during window resize
-				 * @param  {Number} width Current window width
-				 * @return {Void}
-				 */
-				checkWidth = function (width) {
-					//Insert image relative to media query
-					if (width >= 880) {
-						createWindowPane("img/building_8.jpg");
-					} else if (width <= 879 && width >= 660) {
-						createWindowPane("img/building_6.jpg");
-					} else if (width <= 659 && width >= 440) {
-						createWindowPane("img/building_4.jpg");
-					} else if (width <= 439) {
-						createWindowPane("img/building_2.jpg");
-					}
-					//Reload masonry
-					$("#wrapper").masonry("reload");
 				};
 
 				//Initialize masonry
@@ -155,15 +137,28 @@
 					columnWidth: 110
 				});
 
-				//Load appropriate image
-				checkWidth(initialWidth);
-
-				//Setup window resize event to call checkWidth()
-				window.onresize = function () {
-					var width = $(window).width();
-
-					checkWidth(width);
-				};
+				//Enquire Media Queries
+				enquire.register("(min-width: 880px)", {
+					match: function () {
+						$("#wrapper").masonry("reload");
+						createWindowPane("img/building_8.jpg");
+					}
+				}).register("(min-width: 660px) and (max-width: 879px)", {
+					match: function () {
+						$("#wrapper").masonry("reload");
+						createWindowPane("img/building_6.jpg");
+					}
+				}).register("(min-width: 440px) and (max-width: 659px)", {
+					match: function () {
+						$("#wrapper").masonry("reload");
+						createWindowPane("img/building_4.jpg");
+					}
+				}).register("(max-width: 439px)", {
+					match: function () {
+						$("#wrapper").masonry("reload");
+						createWindowPane("img/building_2.jpg");
+					}
+				}).listen(1);
 
 			});
 

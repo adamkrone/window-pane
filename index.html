@@ -6,7 +6,7 @@
 		<style type="text/css">
 
 			/* 6 columns */
-			@media screen and (max-width: 879px) {
+			@media screen and (max-width: 959px) {
 				header h1 {
 					margin-top: 5px;
 
@@ -14,17 +14,12 @@
 				}
 
 				#wrapper {
-					width: 660px;
-				}
-
-				.sixbyfour {
-					height: 470px;
-					height: 420px;
+					width: 720px;
 				}
 			}
 
 			/* 4 columns */
-			@media screen and (min-width: 440px) and (max-width: 659px) {
+			@media screen and (min-width: 480px) and (max-width: 719px) {
 				header h1 {
 					margin-top: 15px;
 
@@ -32,17 +27,17 @@
 				}
 
 				#wrapper {
-					width: 440px;
+					width: 480px;
 				}
 
 				.sixbyfour {
-					width: 430px;
-					height: 210px;
+					width: 479px;
+					height: 239px;
 				}
 			}
 
 			/* 2 columns */
-			@media screen and (max-width: 439px) {
+			@media screen and (max-width: 479px) {
 				header h1 {
 					margin-top: 25px;
 
@@ -50,13 +45,13 @@
 				}
 
 				#wrapper {
-					width: 220px;
+					width: 240px;
 				}
 
 				.sixbyfour,
 				.fourbytwo {
-					width: 210px;
-					height: 210px;
+					width: 239px;
+					height: 239px;
 				}
 			}
 
@@ -92,18 +87,6 @@
 				<div class="window"></div>
 				<div class="reveal">Additional content here...</div>
 			</div>
-			<div class="box twobytwo rollover">
-				<div class="window"></div>
-				<div class="reveal">Additional content here...</div>
-			</div>
-			<div class="box twobytwo rollover">
-				<div class="window"></div>
-				<div class="reveal">Additional content here...</div>
-			</div>
-			<div class="box fourbytwo rollover">
-				<div class="window"></div>
-				<div class="reveal">Additional content here...</div>
-			</div>
 		</div>
 		
 		<!-- Scripts -->
@@ -134,26 +117,26 @@
 				//Initialize masonry
 				$("#wrapper").masonry({
 					itemSelector: ".box",
-					columnWidth: 110
+					columnWidth: 120
 				});
 
 				//Enquire Media Queries
-				enquire.register("(min-width: 880px)", {
+				enquire.register("(min-width: 960px)", {
 					match: function () {
 						$("#wrapper").masonry("reload");
 						createWindowPane("img/building_8.jpg");
 					}
-				}).register("(min-width: 660px) and (max-width: 879px)", {
+				}).register("(min-width: 720px) and (max-width: 959px)", {
 					match: function () {
 						$("#wrapper").masonry("reload");
 						createWindowPane("img/building_6.jpg");
 					}
-				}).register("(min-width: 440px) and (max-width: 659px)", {
+				}).register("(min-width: 480px) and (max-width: 719px)", {
 					match: function () {
 						$("#wrapper").masonry("reload");
 						createWindowPane("img/building_4.jpg");
 					}
-				}).register("(max-width: 439px)", {
+				}).register("(max-width: 479px)", {
 					match: function () {
 						$("#wrapper").masonry("reload");
 						createWindowPane("img/building_2.jpg");

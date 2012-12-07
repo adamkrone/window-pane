@@ -1,48 +1,39 @@
 /******************************************************************************
  * windowPane.js
  *
- * Span images across multiple divs
+ * Span images across multiple elements
  *****************************************************************************/
 
- (function($){
+(function($){
 
- 	$.fn.extend({
- 		windowPane: function(options) {
+	$.fn.extend({
+		windowPane: function(options) {
 
 /******************************************************************************
  * Options
  *****************************************************************************/
 
- 			//Default options
- 			var defaults = {
- 				windowPane: "",
- 				insertInto: "",
- 				image: "",
- 				bgRepeat: "no-repeat",
- 				revealRollovers: false
- 			}
+			var defaults = {
+				windowPane: "",
+				insertInto: "",
+				image: "",
+				bgRepeat: "no-repeat",
+				revealRollovers: false
+			};
 
- 			defaults.insertInto = options.windowPane;
+			defaults.insertInto = options.windowPane;
 
- 			//Override with any provided options
- 			var options = $.extend(defaults, options),
+			options = $.extend(defaults, options);
 
 /******************************************************************************
  * Variables
  *****************************************************************************/
-	 			self = $(this),
-	 			//Image
-	 			image = new Image(),
-				//Window Pane Object
-				WP = {},
-				//Top offset of first "window"
-				offsetTop,
-				//Left offset of first "window"
-				offsetLeft,
-				//counter
+
+			var WP = {},
 				i = 0;
 
-			//Holds top/left position of all "windows"
+			WP.self = $(this);
+			WP.image = new Image();
 			WP.position = [];
 
 /******************************************************************************
@@ -50,22 +41,22 @@
  *****************************************************************************/
 
 			//Get top/left position of all "windows"
-			$(options.windowPane, self).each(function () {
+			$(options.windowPane, WP.self).each(function () {
 				WP.position.push($(this).position());
 			});
 
 			//Set offsets
-			offsetTop = WP.position[0].top;
-			offsetLeft = WP.position[0].left;
+			WP.offsetTop = WP.position[0].top;
+			WP.offsetLeft = WP.position[0].left;
 
 			//Adjust all "windows" to zero out the position
 			$.each(WP.position, function () {
-				this.top -= offsetTop;
-				this.left -= offsetLeft;
+				this.top -= WP.offsetTop;
+				this.left -= WP.offsetLeft;
 			});
 
 			//Insert the image as the background to all targeted elements
-			$(options.insertInto, self).each(function () {
+			$(options.insertInto, WP.self).each(function () {
 				$(this).css({
 					"background-image": "url(" + options.image + ")",
 					"background-repeat": options.bgRepeat,
@@ -81,26 +72,24 @@
 				$(options.insertInto).show();
 
 				//Setup image height
-				image.src = options.image;
-				image.onload = function () {
-					var i = 0;
-
-					//Get image height
-					imageHeight = image.height;
+				WP.image.src = options.image;
+				WP.image.onload = function () {
+					var i = 0,
+					imageHeight = WP.image.height;
 
 					//Find all window elements below image height
-					$(options.windowPane, self).each(function () {
+					$(options.windowPane, WP.self).each(function () {
 						//Hide elements not covered by image height
 						if (WP.position[i].top >= imageHeight) {
 							$(this).children(options.insertInto).hide();
 						}
-						i++
+						i++;
 					});
 				};
 
 			}
 
- 		}
- 	});
+		}
+	});
 
 })(jQuery);

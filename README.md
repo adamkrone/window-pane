@@ -2,14 +2,14 @@
 
 ##Overview
 
-Creates a seamless "window-pane" effect by using only one image. 
+Create a seamless "window-pane" effect using only one image.
 
 ##Usage
 
-To work with this plugin you must include:
+To use this plugin you must include:
 
 - jQuery
-- windowPane.min.js
+- windowPane.js
 
 **Example Initialization:**
 
@@ -17,8 +17,7 @@ To work with this plugin you must include:
 
 	$("#wrapper").windowPane({
 		windowPane: ".box",
-		insertInto: ".sub-box",
-		image: "img/landscape.jpg"
+		image: "img/landscape.jpg”
 	});
 
 ```
@@ -27,11 +26,9 @@ To work with this plugin you must include:
 
 If you want to incorporate windowPane.js on a responsive page, you will need to use a media query event listener such as [enquire.js](http://wickynilliams.github.com/enquire.js/), and re-initialize the plugin. This allows you to also utilize a unique image optimized for each media query.
 
-Future work will likely involve optimizing the responsive side of the plugin, however plans are to keep handlers like enquire.js separate.
-
 ##Options
 
-As you see above, three options can be passed into windowPane.js:
+A few options are required, while others allow customization of windowPane.js behavior:
 
 ###windowPane
 
@@ -40,6 +37,14 @@ _required_
 **default:** none (provided by user)
 
 CSS selector of all elements to be used as "window panes"
+
+###image
+
+_required_
+
+**default:** none (provided by user)
+
+Document relative link to the image displayed across "window panes".
 
 ###insertInto
 
@@ -50,14 +55,6 @@ _optional_
 CSS selector of elements that will display the image as their background. Only necessary if you want to use the image on a child element of the "window pane". _Currently only supports child elements that fill the "window pane"._
 
 **Example:** animation that reveals a different child element on rollover.
-
-###image
-
-_required_
-
-**default:** none (provided by user)
-
-Document relative link to the image displayed across "window panes".
 
 ###bgRepeat
 

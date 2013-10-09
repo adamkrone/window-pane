@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Window Pane Slideshow Demo</title>
+
+	<style>
+		* {
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+
+		html {
+			background: #ddd;
+		}
+
+		#wrapper {
+			width: 630px;
+			margin: 20px auto;
+		}
+
+		#slideshow {
+			position: relative;
+
+			margin: 0;
+			padding: 0;
+		}
+
+		#slideshow li {
+			list-style: none;
+		}
+
+		.box {
+			float: left;
+			width: 200px;
+			height: 200px;
+			margin: 5px;
+			overflow: hidden;
+		}
+
+		.cols-2 {
+			width: 410px;
+		}
+
+		.rows-2 {
+			height: 420px;
+		}
+
+		.window {
+			width: 100%;
+			height: 100%;
+
+			-webkit-transition: background 1000ms;
+			-moz-transition: background 1000ms;
+			-ms-transition: background 1000ms;
+			-o-transition: background 1000ms;
+			transition: background 1000ms;
+		}
+
+		.nav-item {
+			position: absolute;
+			top: 295px;
+
+			height: 30px;
+			margin-top: -15px;
+
+			color: #999;
+			font-size: 50px;
+			text-decoration: none;
+		}
+
+		.nav-item:hover {
+			color: #555;
+		}
+
+		.nav-prev {
+			left: -30px;
+		}
+
+		.nav-next {
+			right: -30px;
+		}
+	</style>
+</head>
+<body>
+	
+	<div id="wrapper">
+		<ul id="slideshow">
+			<li class="nav">
+				<a href="#" class="nav-item nav-prev">&lt;</a>
+				<a href="#" class="nav-item nav-next">&gt;</a>
+			</li>
+			<li class="box cols-2 rows-2">
+				<div class="window"></div>
+			</li>
+			<li class="box rows-2">
+				<div class="window"></div>
+			</li>
+			<li class="box cols-2">
+				<div class="window"></div>
+			</li>
+			<li class="box">
+				<div class="window"></div>
+			</li>
+		</ul>
+	</div>
+
+	<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="../windowPane.js"></script>
+	<script>
+		$("#slideshow").windowPane({
+			windowPane: "li.box",
+			insertInto: ".window",
+			image: ["images/canyon.jpg",
+					"images/lake.jpg",
+					"images/mountains.jpg"],
+			imageType: "slideshow",
+			imageWidth: 1024,
+			autoAdvance: false,
+			includeNav: true,
+			slideStyle: "separate"
+		});
+	</script>
+</body>
+</html>

@@ -38,14 +38,6 @@ _required_
 
 CSS selector of all elements to be used as "window panes"
 
-###image
-
-_required_
-
-**default:** none (provided by user)
-
-Document relative link to the image displayed across "window panes".
-
 ###insertInto
 
 _optional_
@@ -55,6 +47,14 @@ _optional_
 CSS selector of elements that will display the image as their background. Only necessary if you want to use the image on a child element of the "window pane". _Currently only supports child elements that fill the "window pane"._
 
 **Example:** animation that reveals a different child element on rollover.
+
+###image
+
+_required_
+
+**default:** none (provided by user)
+
+Document relative link to the image displayed across "window panes". If you're using the slideshow functionality, this will be an array of links.
 
 ###bgRepeat
 
@@ -71,6 +71,86 @@ _optional_
 **default:** false
 
 Automatically reveals any elements that are not covered by the background image. Useful in a responsive page if bgRepeat isn't practical.
+
+###slideshowSpeed
+
+_optional_
+
+**default:** 5000
+
+Time (in milliseconds) to wait before auto advancing slides.
+
+###slideSpeed
+
+_optional_
+
+**default:** 1000
+
+Time (in milliseconds) for the slide animation to last.
+
+###autoAdvance
+
+_optional_
+
+**default:** false
+
+Whether or not the automatic slideshow should run.
+
+###slideDirection
+
+_optional_
+
+**default:** "next"
+
+Direction to slide when auto advancing ("next" or "prev").
+
+###slideStyle
+
+_optional_
+
+**default:** "single"
+
+Animation style for slides. "single" will move the background image as one unit. "separate" will move each "window-pane" separately. See the demo pages to clarify this difference.
+
+###includeNav
+
+_optional_
+
+**default:** false
+
+Whether or not to include navigation functionality ("prev"/"next" style buttons).
+
+###navPrev
+
+_optional_
+
+**default:** ".nav-prev"
+
+CSS selector that controls the "prev" action.
+
+##navNext
+
+_optional_
+
+**default:** ".nav-next"
+
+CSS selector that controls the "next" action.
+
+###includeNavIcons
+
+_optional_
+
+**default:** false
+
+Whether or not to include navigation icons, used to jump directly to a specific "slide".
+
+###navIcon
+
+_optional_
+
+**default:** ".nav-icon"
+
+CSS selector for nav icon controls.
 
 ##License
 

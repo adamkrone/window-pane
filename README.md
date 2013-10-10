@@ -152,6 +152,14 @@ _optional_
 
 CSS selector for nav icon controls.
 
+###includeParallax
+
+_optional_
+
+**default:** false
+
+Whether or not to include the parallax effect (background moves according to mouse). Requires imageWidth and imageHeight to be set. The image(s) must be larger than the width and height of the element windowPane is called on.
+
 ##License
 
 windowPane.js is released under the [MIT](http://opensource.org/licenses/mit-license.php) license:

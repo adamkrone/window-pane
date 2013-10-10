@@ -271,16 +271,16 @@
 			}
 
 			// Setup parallax effect if enabled
-			if (options.includeParallax) {
-				$(window).on("mousemove", function (event) {
+			$(window).on("mousemove", function (event) {
+				if (options.includeParallax && ! WP.animating) {
 					var windowWidth = $(window).width(),
 							windowHeight = $(window).height(),
 							cursorX = event.pageX,
 							cursorY = event.pageY,
 							percentX = cursorX / windowWidth,
 							percentY = cursorY / windowHeight,
-							widthDiff = Math.abs(windowWidth - WP.self.width()) / 2,
-							heightDiff = Math.abs(windowHeight - WP.self.height()) / 2;
+							widthDiff = Math.abs(options.imageWidth - WP.self.width()),
+							heightDiff = Math.abs(options.imageHeight - WP.self.height());
 
 					if (options.imageType === "single") {
 						$(options.insertInto, WP.self).each(function (i, windowElement) {
@@ -292,9 +292,31 @@
 									newTop + "px"
 							});
 						});
+					} else if (options.imageType === "slideshow") {
+						if (options.slideStyle === "single") {
+							$(options.insertInto, WP.self).each(function (i, windowElement) {
+								var newLeft = WP.position[i].left + (widthDiff * percentX),
+										newTop = WP.position[i].top + (heightDiff * percentY);
+
+								$(windowElement).css({
+									"margin-left": "-" + newLeft + "px",
+									"margin-top": "-" + newTop + "px"
+								});
+							});
+						} else if (options.slideStyle === "separate") {
+							$(options.insertInto, WP.self).each(function (i, windowElement) {
+								var newLeft = WP.position[i].left + (widthDiff * percentX),
+										newTop = WP.position[i].top + (heightDiff * percentY);
+
+								$(windowElement).find(".slide:first").css({
+									"background-position": "-" + newLeft + "px -" +
+										newTop + "px"
+								});
+							});
+						}
 					}
-				});
-			}
+				}
+			});
 
 		}
 	});

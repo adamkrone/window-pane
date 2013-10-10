@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Window Pane Slideshow Demo | Basic with Parllax</title>
+	<title>Window Pane Slideshow Demo | Separate Style with Parallax</title>
 
 	<style>
 		* {
@@ -20,6 +20,8 @@
 		}
 
 		#slideshow {
+			position: relative;
+
 			margin: 0;
 			padding: 0;
 			overflow: hidden;
@@ -49,6 +51,42 @@
 			width: 100%;
 			height: 100%;
 		}
+
+		.nav-icons {
+			position: absolute;
+			top: 605px;
+			left: 10px;
+
+			margin: 0;
+			padding: 0;
+		}
+		
+		.nav-icons > ul {
+			margin: 0;
+			padding: 0;
+		}
+
+		.nav-icon {
+			float: left;
+			width: 10px;
+			height: 10px;
+			margin: 3px;
+
+			background: #aaa;
+			opacity: 0.5;
+			border-radius: 5px;
+		}
+
+		.nav-icon:hover,
+		.nav-icon.current-slide {
+			opacity: 1;
+		}
+
+		.nav-icon a {
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
 	</style>
 </head>
 <body>
@@ -73,20 +111,34 @@
 			<li class="box cols-2">
 				<div class="window"></div>
 			</li>
+			<li class="nav-icons">
+				<ul>
+					<li class="nav-icon current-slide"><a href="#"></a></li>
+					<li class="nav-icon"><a href="#"></a></li>
+					<li class="nav-icon"><a href="#"></a></li>
+				</ul>
+			</li>
 		</ul>
 	</div>
 
 	<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script src="../windowPane.js"></script>
 	<script>
-	$("#slideshow").windowPane({
-		windowPane: "li",
-		insertInto: ".window",
-		image: "images/canyon_large.jpg",
-		imageWidth: 1433,
-		imageHeight: 888,
-		includeParallax: true
-	});
+		$("#slideshow").windowPane({
+			windowPane: "li.box",
+			insertInto: ".window",
+			image: ["images/canyon_large.jpg",
+					"images/lake_large.jpg",
+					"images/mountains_large.jpg"],
+			imageType: "slideshow",
+			imageWidth: 1433,
+			imageHeight: 888,
+			autoAdvance: true,
+			slideStyle: "separate",
+			includeNavIcons: true,
+			navIcon: ".nav-icon",
+			includeParallax: true
+		});
 	</script>
 </body>
 </html>

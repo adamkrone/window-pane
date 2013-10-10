@@ -64,7 +64,7 @@ _optional_
 
 CSS background-repeat argument to use on the background image.
 
-###repeatRollovers
+###revealRollovers
 
 _optional_
 

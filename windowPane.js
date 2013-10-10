@@ -30,7 +30,8 @@
 				navPrev: ".nav-prev",
 				navNext: ".nav-next",
 				includeNavIcons: false,
-				navIcon: ".nav-icon"
+				navIcon: ".nav-icon",
+				includeParallax: false
 			};
 
 			defaults.insertInto = options.windowPane;
@@ -266,6 +267,32 @@
 					WP.slide(direction, times);
 
 					event.preventDefault();
+				});
+			}
+
+			// Setup parallax effect if enabled
+			if (options.includeParallax) {
+				$(window).on("mousemove", function (event) {
+					var windowWidth = $(window).width(),
+							windowHeight = $(window).height(),
+							cursorX = event.pageX,
+							cursorY = event.pageY,
+							percentX = cursorX / windowWidth,
+							percentY = cursorY / windowHeight,
+							widthDiff = Math.abs(windowWidth - WP.self.width()) / 2,
+							heightDiff = Math.abs(windowHeight - WP.self.height()) / 2;
+
+					if (options.imageType === "single") {
+						$(options.insertInto, WP.self).each(function (i, windowElement) {
+							var newLeft = WP.position[i].left + (widthDiff * percentX),
+									newTop = WP.position[i].top + (heightDiff * percentY);
+
+							$(windowElement).css({
+								"background-position": "-" + newLeft + "px -" +
+									newTop + "px"
+							});
+						});
+					}
 				});
 			}
 

@@ -128,7 +128,7 @@ _optional_
 
 CSS selector that controls the "prev" action.
 
-##navNext
+###navNext
 
 _optional_
 

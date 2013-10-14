@@ -94,7 +94,7 @@ _optional_
 
 **default:** false
 
-Whether or not the automatic slideshow should run.
+Starts an automatically advancing slideshow.
 
 ###slideDirection
 
@@ -118,7 +118,7 @@ _optional_
 
 **default:** false
 
-Whether or not to include navigation functionality ("prev"/"next" style buttons).
+Includes navigation functionality ("prev"/"next" style buttons).
 
 ###navPrev
 
@@ -142,7 +142,7 @@ _optional_
 
 **default:** false
 
-Whether or not to include navigation icons, used to jump directly to a specific "slide".
+Includes navigation icons, used to jump directly to a specific "slide".
 
 ###navIcon
 
@@ -158,7 +158,7 @@ _optional_
 
 **default:** false
 
-Whether or not to include the parallax effect (background moves according to mouse). Requires imageWidth and imageHeight to be set. The image(s) must be larger than the width and height of the element windowPane is called on.
+Includes a parallax effect (background moves according to mouse). Requires imageWidth and imageHeight to be set. The image(s) must be larger than the width and height of the element windowPane is called on.
 
 ##License
 

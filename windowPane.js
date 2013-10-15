@@ -31,6 +31,7 @@
 				navNext: ".nav-next",
 				includeNavIcons: false,
 				navIcon: ".nav-icon",
+				activeSlideClass: "current-slide",
 				includeParallax: false
 			};
 
@@ -113,15 +114,19 @@
 							}
 						}
 
-						$(options.navIcon, WP.self).removeClass("current-slide");
-						$(options.navIcon + ":eq(" + (WP.currentSlide - 1) + ")", WP.self)
-							.addClass("current-slide");
+						$(options.navIcon).removeClass(options.activeSlideClass);
+						$(options.navIcon + ":eq(" + (WP.currentSlide - 1) + ")")
+							.addClass(options.activeSlideClass);
 					}
 
 					setTimeout(function () {
 						WP.animating = false;
 						if(options.autoAdvance) {
 							WP.startSlideshow();
+						}
+
+						if (typeof options.onSlide === "function") {
+							options.onSlide(direction, times, WP.currentSlide);
 						}
 					}, options.slideSpeed);
 				}
@@ -259,7 +264,7 @@
 
 			// Setup nav icons if enabled
 			if (options.includeNavIcons) {
-				$(options.navIcon, WP.self).on("click", function (event) {
+				$(options.navIcon).on("click", function (event) {
 					var navIndex = $(this).index() + 1,
 							direction = (navIndex > WP.currentSlide) ? "next" : "prev",
 							times = Math.abs(navIndex - WP.currentSlide);

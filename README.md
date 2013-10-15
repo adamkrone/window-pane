@@ -34,7 +34,7 @@ A few options are required, while others allow customization of windowPane.js be
 
 _required_
 
-**default:** none (provided by user)
+**default:** none
 
 CSS selector of all elements to be used as "window panes"
 
@@ -52,7 +52,7 @@ CSS selector of elements that will display the image as their background. Only n
 
 _required_
 
-**default:** none (provided by user)
+**default:** none
 
 Document relative link to the image displayed across "window panes". If you're using the slideshow functionality, this will be an array of links.
 
@@ -112,6 +112,26 @@ _optional_
 
 Animation style for slides. "single" will move the background image as one unit. "separate" will move each "window-pane" separately. See the demo pages to clarify this difference.
 
+###onSlide
+
+_optional_
+
+**default:** none
+
+Function that executes when slide is changed. Passes direction, and number of times the slide is executed. For example
+
+```javascript
+	
+	onSlide: function (direction, times, currentSlide) {
+		console.log("I moved ", direction, " ", times, " times!");
+		console.log("Currently on slide #", currentSlide);
+	}
+```
+
+If the slide is triggered to move "next" 5 times, starting from the first, it will print:
+"I moved next 5 times!"
+"Currently on slide #6"
+
 ###includeNav
 
 _optional_
@@ -151,6 +171,14 @@ _optional_
 **default:** ".nav-icon"
 
 CSS selector for nav icon controls.
+
+###activeSlideClass
+
+_optional_
+
+**default:** "current-slide"
+
+Class used on the current nav-icon, indicating the current slide being viewed.
 
 ###includeParallax
 
